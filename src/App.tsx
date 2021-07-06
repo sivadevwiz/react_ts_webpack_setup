@@ -1,3 +1,3 @@
 export const App = () => {
-    return <h1> Working!</h1>
+    return <h1>First react template</h1>
 }
