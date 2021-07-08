@@ -37,12 +37,17 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2",
     "react-refresh": "^0.10.0",
     "style-loader": "^3.0.0",
     "typescript": "^4.3.5",
@@ -50,5 +55,21 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
+  },
+  "lint-staged": {
+    "@comment eslint --fix": "Below says that before commiting, if linting errors are found in the files it will not allow users to commit code",
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --fix"
+    ],
+    "@comment prettier --write": "Below says that before commiting, all formatting in the files configured will be fixed ",
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "@comment husty": "The configuration is used to call list-staged in the pre-commit stage",
+      "pre-commit": "lint-staged"
+    }
   }
 }
