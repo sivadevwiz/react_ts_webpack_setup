@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/sivadevwiz/react_ts_webpack_setup#readme",
   "dependencies": {
+    "husky": "^4.3.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -45,7 +46,6 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
-    "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2",
     "react-refresh": "^0.10.0",
@@ -56,6 +56,12 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
   },
+  "husky": {
+    "hooks": {
+      "@comment husky": "The configuration is used to call list-staged in the pre-commit stage",
+      "pre-commit": "npx lint-staged"
+    }
+  },
   "lint-staged": {
     "@comment eslint --fix": "Below says that before commiting, if linting errors are found in the files it will not allow users to commit code",
     "src/**/*.{js,jsx,ts,tsx,json}": [
@@ -65,11 +71,5 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "@comment husky": "The configuration is used to call list-staged in the pre-commit stage",
-      "pre-commit": "npx lint-staged"
-    }
   }
 }
