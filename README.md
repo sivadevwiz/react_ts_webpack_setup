@@ -7,7 +7,8 @@ Basic setup for a React Typescript project with
 3. webpack for bundling
 4. Babel for transpiling
 
-##Installing
+# Installing
+
 Run the below command to create a project and will have all the settings enabled
 
 npx degit https://github.com/sivadevwiz/react_ts_webpack_setup <App name>
