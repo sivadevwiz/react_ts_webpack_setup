@@ -1,4 +1,4 @@
-# react_ts_webpack_setup
+# React TS Webpack setup
 
 Basic setup for a React Typescript project with
 
