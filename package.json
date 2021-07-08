@@ -57,16 +57,19 @@
     "webpack-merge": "^5.8.0"
   },
   "lint-staged": {
+    "@comment eslint --fix": "Below says that before commiting, if linting errors are found in the files it will not allow users to commit code",
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "eslint --fix"
     ],
+    "@comment prettier --write": "Below says that before commiting, all formatting in the files configured will be fixed ",
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "@comment husky": "The configuration is used to call list-staged in the pre-commit stage",
+      "pre-commit": "npx lint-staged"
     }
   }
 }
