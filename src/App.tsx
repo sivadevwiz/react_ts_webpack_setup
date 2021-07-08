@@ -5,8 +5,8 @@ import LOGO from './react.svg';
 import ClickCounter from './ClickCounter';
 
 export const App = () => {
-  const a = "tessst";
-
+  const test = 'test';
+  console.log(`test`, test);
   return (
     <>
       <h1>
