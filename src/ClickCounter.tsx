@@ -11,6 +11,7 @@ class ClickCounter extends Component {
       count: this.state.count + 1,
     });
   };
+
   render() {
     const { count } = this.state;
     return (
