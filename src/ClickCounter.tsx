@@ -1,5 +1,4 @@
-import { render } from "react-dom";
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class ClickCounter extends Component {
   state = {
