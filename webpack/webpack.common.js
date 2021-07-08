@@ -23,6 +23,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.scss$/,
+        use: [
+          'style-loader', //3. Injected to DOM
+          'css-loader', // 2. CSS -> Common.js
+          'sass-loader', // 1. SASS -> CSS
+      ],
+      },
+      {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
