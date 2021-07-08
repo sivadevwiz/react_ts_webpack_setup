@@ -32,7 +32,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:eslint-comments/recommended',
     'prettier',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended', //TODO check how to override this and add prettierrc.js
   ],
   rules: {
     // custom rules apart from the rules from plugin

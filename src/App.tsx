@@ -1,4 +1,5 @@
 import './styles.css';
+import './newStyles.scss';
 
 import IMAGE from './MHN_video.png';
 import LOGO from './react.svg';
