@@ -5,7 +5,7 @@ import LOGO from './react.svg';
 import ClickCounter from './ClickCounter';
 
 export const App = () => {
-  const a = "tesst";
+  const a = "tessst";
 
   return (
     <>
