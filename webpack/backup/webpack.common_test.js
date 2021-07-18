@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -26,7 +25,7 @@ module.exports = {
         exclude: ['/node_modules/', '/build/'],
         use: [
           MiniCssExtractPlugin.loader,
-          // 'style-loader', // won't work
+          // 'style-loader',
           'css-loader',
         ],
       },
@@ -36,28 +35,28 @@ module.exports = {
         exclude: ['/node_modules/', '/build/'],
         use: [
           MiniCssExtractPlugin.loader,
-          // 'style-loader', //3. Injected to DOM // won't work
+          // 'style-loader', //3. Injected to DOM
           'css-loader', // 2. CSS -> Common.js
           'sass-loader', // 1. SASS -> CSS
         ],
       },
-      // TODO Find a way to src/*.scss => build/CSS/*.css
       // {
+      //   test: /test.css$/,
+      //   include: ['/build/'],
+      //   use: ['style-loader'],
+      // },
+      // {
+      //   // this is to have CSS as external file instead of injecting into DOM
       //   test: /\.s?css$/,
       //   exclude: ['/node_modules/', '/build/'],
       //   use: [
       //     // always the options comes before the loaders
       //     {
       //       loader: 'file-loader',
-      //       options: { outputPath: 'css/', name: '[name].css' },
+      //       options: { outputPath: 'css/', name: '[name].min.css' },
       //     },
       //     'sass-loader', // 1. SASS -> CSS
       //   ],
-      // },
-      // {
-      //   test: /test.css$/,
-      //   include: ['/build/'],
-      //   use: ['style-loader'],
       // },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -81,22 +80,14 @@ module.exports = {
       patterns: [{ from: 'source', to: 'dest', noErrorOnMissing: true }],
     }),
     new MiniCssExtractPlugin({
-      // whatever CSS file is given here, it's added to the build/index.html
       filename: 'main.css',
       // chunkFilename: '[id].css',
     }),
+    new CssMinimizerPlugin(),
   ],
   optimization: {
-    minimize: true,
-    minimizer: [
-      // to minimze CSS
-      new CssMinimizerPlugin(),
-      // to minimize the bundle.js
-      new UglifyJsPlugin({
-        include: /bundle.js$/,
-        extractComments: true, // to remove comments on bundle.js
-      }),
-    ],
+    // to minimze CSS
+    minimizer: [new CssMinimizerPlugin()],
   },
   stats: 'errors-only',
 };
